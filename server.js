@@ -54,10 +54,11 @@ client.connect(function (err) {
 });
 
 app.use(cors());
-
-
 app.use(bodyParser.json());
 app.use(route);
+app.all('*', (req, res) => {
+  res.status(200).send('<h1>connected to express</h1>')
+})
 app.listen(PORT, () => {
   console.log(`server run on ${PORT}`);
 });
